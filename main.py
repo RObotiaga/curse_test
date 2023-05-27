@@ -1,6 +1,7 @@
 from functions import sort_by_data, normalize_check, normalize_card
 from datetime import datetime
 
+
 for data in sort_by_data()[:4]:
     normal_date = datetime.strptime(data['date'], '%Y-%m-%dT%H:%M:%S.%f')
     formatted_date = normal_date.strftime('%d.%m.%Y')
