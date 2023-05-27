@@ -39,7 +39,7 @@ Readme файл
 5. Активируйте виртуальное окружение Poetry:
 
    ```
-   poetry shell
+   poetry install
    ```
 
 6. Запустите скрипт:
