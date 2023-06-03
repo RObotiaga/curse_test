@@ -9,7 +9,7 @@ def get_data():
         Returns:
             list: Список данных операций.
     """
-    with open('/home/main/pythonProject/operations.json', 'r') as file:
+    with open(os.path.join(os.path.dirname(os.path.abspath(file)), 'operations.json'), 'r') as file:
         return json.load(file)
 
 
