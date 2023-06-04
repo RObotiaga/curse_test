@@ -4,14 +4,14 @@ from datetime import datetime
 
 def get_data():
     """
-        Функция get_data() считывает данные из файла operations.json.f
+        Функция get_data() считывает данные из файла operations.json
 
         Returns:
             list: Список данных операций.
     """
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..', 'operations.json'), 'r') as file:
         return json.load(file)
-print(get_data())
+
 
 def normalize_card(card):
     """
