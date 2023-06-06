@@ -1,4 +1,4 @@
-import json
+import json, os
 from datetime import datetime
 
 
@@ -9,7 +9,7 @@ def get_data():
         Returns:
             list: Список данных операций.
     """
-    with open(os.path.join(os.path.dirname(os.path.abspath(file)), 'operations.json'), 'r') as file:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..', 'operations.json'), 'r') as file:
         return json.load(file)
 
 
@@ -60,3 +60,23 @@ def sort_by_data():
 
     sorted_data = sorted(accepted_list, key=lambda x: datetime.strptime(x['date'], '%Y-%m-%dT%H:%M:%S.%f'))
     return sorted_data[::-1]
+
+def format_date(date_string):
+    """
+    Функция для форматирования даты в строку в формате 'дд.мм.гггг'.
+    """
+    normal_date = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%S.%f')
+    formatted_date = normal_date.strftime('%d.%m.%Y')
+    return formatted_date
+
+def get_normalized_value(value):
+    """
+    Функция для получения нормализованного значения из строки значения.
+    Если значение содержит 'Счет', используется функция normalize_check,
+    в противном случае - функция normalize_card.
+    """
+    if 'Счет' in value:
+        normalized_value = normalize_check(value)
+    else:
+        normalized_value = normalize_card(value)
+    return normalized_value
